@@ -84,7 +84,7 @@
                     </div>
                 <% } %>
 
-                <% for( let review of recipe.reviews ) { %>
+                <% for( let review of recipe.reviews.reverse() ) { %>
                     <div class="card p-3 my-1 ">
                         <h6 class="card-title ">
                             Review <span class="text-muted">by <strong> <%= review.authorName %> </strong></span>
