@@ -1,0 +1,46 @@
+<%- layout('layouts/boilerplate') %> 
+    
+    <div class="row">
+        <div class="col-8 col-xs-8 col-sm-8 col-md-7 col-lg-6 m-auto " >
+            <div class="text-muted my-3 text-center">
+                <h1>Yayyy one more recipe !!!</h1>
+            </div>
+            <form class=" p-2 pt-0 validated-form" action="/recipes" method="POST" enctype="multipart/form-data" novalidate>
+                <div class="row">
+                    <div class="mb-3 col-8">
+                        <label class="form-label " for="title">Title</label>
+                        <input class="form-control " type="text" name="recipe[title]" id="title" maxlength="20" autofocus required>
+                    </div>
+                    <div class="mb-3 col-4 mt-auto">
+                        <input type="radio" class="btn-check" value="1" name="recipe[category]" id="veg" autocomplete="off" checked>
+                        <label class="btn btn-outline-success" for="veg">Veg</label>
+                        <input type="radio" class="btn-check" value="0" name="recipe[category]" id="nonveg" autocomplete="off">
+                        <label class="btn btn-outline-danger" for="nonveg">Non-Veg</label>
+                    </div>
+                    
+                </div>
+                <div class="mb-3">
+                    <label class="form-label " for="description">Description</label>
+                    <textarea class="form-control" type="text" name="recipe[description]" id="description"  required></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="cookingTips">Cookin Tips</label>
+                    <textarea class="form-control " type="text" name="recipe[cookingTips]" id="cookingTips" required></textarea>
+                </div>
+                <div class="mb-5">
+                    <div class="form-file custom-file">
+                        <input type="file" class="form-file-input" id="images" name="images" multiple required>
+                        <label class="form-file-label" for="images">
+                            <span class="form-file-text custom-file-label">Choose image(s)...</span>
+                            <span class="form-file-button">Browse</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="mb-4 btn btn-success d-block w-100" type="submit">Create </button>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,57 @@
+<% layout('layouts/boilerplate') %>
+    
+<% for(let recipe of recipes) {%>
+    <div class="container card my-2" style="max-width: 900px;">
+            <div class="row g-0 my-2">
+                <div class="col-sm-4 col-md-5 py-2">
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active ">
+                                <img class="img-fluid  d-block " style=" object-fit: cover; object-position: center; height: 300px; width: 300px;" src="<%=recipe.images[0].url %>" alt="">
+                            </div>
+
+                            <% for( let index = 1; index < recipe.images.length; index++ ) { %>
+                                <div class="carousel-item ">
+                                    <img class="img-fluid d-block w-100" src="<%=recipe.images[index].url %>" alt="">
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-md-1 py-2"></div>
+                <div class="col-sm-6  py-2">
+                    <div class="class-body">
+                        <h3 class="card-titls">
+                            <%= recipe.title %>
+                            <span class="ml-1  mb-3">
+                                <% if(recipe.category==='1'){ %> 
+                                    <span class="btn btn-outline-success btn-sm" >Veg</span>
+                                <% } else { %>
+                                    <span  class="btn btn-outline-danger btn-sm">Non-Veg</span>
+                                <% } %> 
+                            </span>
+                        </h3>
+                        <h6 class="card-text text-muted">by <strong><%= recipe.authorName %></strong>
+                        </h6>
+                        <p class="card-text">
+                            <%= recipe.description.slice(0,100)+"..." %>
+                        </p>
+                        <p class="card-text" > Cooking Tips -
+                            <%= recipe.cookingTips.slice(0,50)+'...' %>
+                        </p>
+                        <form  action="/recipes/<%= recipe._id %> ">
+                            <% if(recipe.category==='1'){ %> 
+                                <button class="btn btn-success ">View Details</button>
+                            <% } else { %>
+                                <button  class="btn btn-danger ">View Details</button>
+                            <% } %> 
+                        </form>
+                    </div>     
+                </div>
+            </div>
+        </div>
+    <% } %>
+
+
+    </div>

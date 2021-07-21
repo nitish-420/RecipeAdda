@@ -1,0 +1,65 @@
+<%- layout('layouts/boilerplate') %> 
+    
+    <div class="row">
+        <div class="col-8 col-xs-8 col-sm-8 col-md-7 col-lg-6 m-auto " >
+            <div class="text-muted my-3 text-center">
+                <h1>Yayyy it's getting better !!!</h1>
+            </div>
+            <form class=" p-2 pt-0 validated-form" action="/recipes/<%= recipe._id%>?_method=PUT " method="POST" enctype="multipart/form-data" novalidate>
+                <div class="mb-3">
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-8">
+                        <label class="form-label " for="title">Title</label>
+                        <input class="form-control " type="text" name="recipe[title]" value="<%= recipe.title %> " id="title" maxlength="20" autofocus required>
+                    </div>
+                    <div class="mb-3 col-4 mt-auto">
+                        <input type="radio" class="btn-check" value="1" name="recipe[category]" id="veg" autocomplete="off" <%if (recipe.category==='1') {%>  checked  <%} %> >
+                        <label class="btn btn-outline-success" for="veg">Veg</label>
+                        <input type="radio" class="btn-check" value="0" name="recipe[category]" id="nonveg" autocomplete="off" <%if (recipe.category==='0') {%>  checked  <%} %> >
+                        <label class="btn btn-outline-danger" for="nonveg">Non-Veg</label>
+                    </div>
+                    
+                </div>
+                <div class="mb-3">
+                    <label class="form-label " for="description">Description</label>
+                    <textarea class="form-control" type="text" name="recipe[description]"  id="description"  required><%= recipe.description %> </textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="cookingTips">Cookin Tips</label>
+                    <textarea class="form-control " type="text" name="recipe[cookingTips]"   id="cookingTips" required> <%= recipe.cookingTips %></textarea>
+                </div>
+                <div class="mb-5">
+                    <div class="form-file custom-file">
+                        <input type="file" class="form-file-input" id="images" name="images" multiple >
+                        <label class="form-file-label" for="images">
+                            <span class="form-file-text custom-file-label">Add more image(s)...</span>
+                            <span class="form-file-button">Browse</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <% if(recipe.images.length>1 || recipe.images[0].filename!=='RecipeAdda/q6c0j7tmtfxm3rbxmmop'){ %> 
+
+                        <div class="text-muted my-3 text-center">
+                            <h4>Select image(s) to delete...</h4>
+                        </div>
+                    <% } %> 
+                    <% recipe.images.forEach(function(img,i){%>
+                        <% if (img.filename!=='RecipeAdda/q6c0j7tmtfxm3rbxmmop') { %>
+                            <img src="<%= img.thumbnail%>" class="img-thumbnail" alt="">
+                            <div class="form-check-inline">
+                                <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>"  >
+                            </div>
+                        <% } %>
+                
+                    <% }) %> 
+                </div>
+                
+                <button class="mb-4 btn btn-success d-block w-100" type="submit">Update Recipe </button>
+            </form>
+        </div>
+    </div>
