@@ -3,9 +3,9 @@ Find it here : https://shielded-basin-90165.herokuapp.com/
 
 Technologies used in this app : 
 
-  Mongo Db as database (Mongo atlas)
-  Express in Node js 
-  Cloudinary to upload images 
+  Mongo Db as database (Mongo atlas),
+  Express in Node js ,
+  Cloudinary to upload images ,
   EJS (embedded javascript) to make webpage dynamic
   
  
